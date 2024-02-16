@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    command: python app.py
+    volumes:
+      - my-vol:/data
+    resources:
+      - my-vol
+    scale:
+      cpu: 256
+      memory: 320
+resources:
+  my-vol:
+    type: efs
+    options:
+      path: "/volumes"
