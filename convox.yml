@@ -1,7 +1,21 @@
 services:
-  app:
+  service1:
     build: .
     command: python app.py
+    environment:
+      - SERVICE_NAME=service1
+    volumes:
+      - my-vol:/data
+    resources:
+      - my-vol
+    scale:
+      cpu: 256
+      memory: 320
+  service2:
+    build: .
+    command: python app.py
+    environment:
+      - SERVICE_NAME=service2
     volumes:
       - my-vol:/data
     resources:
